@@ -1,0 +1,82 @@
+.galaxy-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at bottom, var(--color-bg-space) 0%, var(--color-bg-deep) 100%);
+    overflow: hidden;
+}
+
+.star-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    /* Taller for scrolling illusion if needed, but fixed parallax usually moves slightly */
+    background-repeat: repeat;
+    /* Will be set by inline styles or separate classes for images/gradients */
+}
+
+/* We can generate stars using box-shadows or use a canvas. 
+   For cinematic feel, multiple layers of box-shadow stars are performant enough for simple dots.
+   Or we can use a canvas component. Let's try CSS box-shadows first for simplicity and easy parallax. 
+*/
+
+.stars-small {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    animation: twinkle var(--speed-med) infinite;
+}
+
+.stars-medium {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    animation: twinkle var(--speed-slow) infinite;
+}
+
+.stars-large {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    animation: twinkle var(--speed-fast) infinite;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.nebula {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--color-primary-dim, rgba(108, 92, 231, 0.2)) 0%, transparent 70%);
+    filter: blur(40px);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float-nebula 20s infinite alternate;
+}
+
+@keyframes float-nebula {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+}

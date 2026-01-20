@@ -1,0 +1,47 @@
+:root {
+  /* Galaxy Color Palette */
+  --color-bg-deep: #050511;     /* Very dark blue/black */
+  --color-bg-space: #0b0d17;    /* Slightly lighter space */
+  --color-primary: #6c5ce7;     /* Nebula Purple */
+  --color-secondary: #00cec9;   /* Cyan highlight */
+  --color-accent: #e056fd;      /* Neon Pink/Magenta */
+  --color-text-main: #ffffff;
+  --color-text-dim: #a29bfe;
+
+  /* Fonts */
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-display: 'Orbitron', 'Inter', sans-serif; /* If we add a fancy font later */
+
+  /* Spacing */
+  --section-padding: 6rem 2rem;
+  
+  /* Animation Speeds */
+  --speed-slow: 20s;
+  --speed-med: 5s;
+  --speed-fast: 1s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden; /* Prevent horiz scroll from animations */
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}

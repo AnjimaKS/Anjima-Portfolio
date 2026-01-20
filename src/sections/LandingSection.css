@@ -1,0 +1,134 @@
+.landing-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.landing-title {
+    font-family: var(--font-display, sans-serif);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fade-in-up 1.5s ease-out forwards 0.5s, glow-pulse 3s infinite alternate 2s;
+    text-shadow: 0 0 20px rgba(108, 92, 231, 0.5);
+}
+
+.landing-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-dim);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fade-in-up 1.5s ease-out forwards 1s;
+}
+
+.landing-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fade-in-up 1.5s ease-out forwards 1.5s;
+}
+
+.landing-intro span {
+    color: var(--color-secondary);
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow-pulse {
+    0% {
+        text-shadow: 0 0 20px rgba(108, 92, 231, 0.5);
+    }
+
+    100% {
+        text-shadow: 0 0 40px rgba(108, 92, 231, 0.8), 0 0 10px rgba(0, 206, 201, 0.5);
+    }
+}
+
+/* Shooting Star Animation */
+.shooting-star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star-streak {
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shoot 5s linear infinite;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Delays ensuring they don't all come at once */
+.star-streak:nth-child(1) {
+    top: 20%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+.star-streak:nth-child(2) {
+    top: 50%;
+    right: -10%;
+    animation-delay: 7s;
+}
+
+.star-streak:nth-child(3) {
+    top: 10%;
+    right: 40%;
+    animation-delay: 11s;
+}
