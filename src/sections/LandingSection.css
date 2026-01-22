@@ -9,6 +9,120 @@
     padding: 0 2rem;
     overflow: hidden;
     z-index: 10;
+    perspective: 1000px;
+    /* Enable 3D space for layers */
+}
+
+/* Parallax Layers */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Deep Space Nebula */
+.nebula-container {
+    opacity: 0.9;
+    /* Increased visibility as requested */
+    mix-blend-mode: screen;
+}
+
+.nebula-cloud {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.4), transparent 60%);
+    border-radius: 50%;
+    filter: blur(40px);
+    /* Reduced blur slightly for more definition */
+    animation: nebula-pulse 15s ease-in-out infinite alternate;
+}
+
+.nebula-1 {
+    width: 800px;
+    /* Larger */
+    height: 800px;
+    top: -150px;
+    left: -150px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.25), transparent 70%);
+}
+
+.nebula-2 {
+    width: 600px;
+    height: 600px;
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(0, 206, 201, 0.2), transparent 70%);
+    animation-delay: -5s;
+}
+
+.nebula-3 {
+    width: 500px;
+    height: 400px;
+    top: 30%;
+    left: 20%;
+    background: radial-gradient(ellipse, rgba(253, 121, 168, 0.15), transparent 70%);
+    animation-delay: -10s;
+}
+
+/* Spacecraft / Particles */
+.spacecraft-container {
+    z-index: 3;
+}
+
+.drifting-pod {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    clip-path: polygon(0 50%, 30% 0, 100% 50%, 30% 100%);
+    top: 60%;
+    left: 10%;
+    transform: rotate(15deg);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+    animation: drift-across 40s linear infinite;
+}
+
+.drifting-pod::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.8));
+}
+
+@keyframes nebula-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+
+
+@keyframes drift-across {
+    0% {
+        transform: translate(0, 0) rotate(15deg);
+    }
+
+    50% {
+        transform: translate(50px, -20px) rotate(20deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(15deg);
+    }
 }
 
 .landing-content {
@@ -131,4 +245,102 @@
     top: 10%;
     right: 40%;
     animation-delay: 11s;
+}
+
+/* Resume Button */
+.resume-btn-container {
+    opacity: 0;
+    animation: fade-in-up 1.5s ease-out forwards 2s;
+    margin-top: 2rem;
+    z-index: 10;
+    position: relative;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: rgba(108, 92, 231, 0.2);
+    border: 2px solid var(--color-primary);
+    border-radius: 50px;
+    color: var(--color-text-main);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-btn:hover {
+    background: var(--color-primary);
+    box-shadow: 0 0 30px var(--color-primary), 0 0 60px var(--color-accent);
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.resume-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.resume-btn:hover::before {
+    left: 100%;
+}
+
+/* Responsive Adjustments for Spacecraft */
+@media (max-width: 1024px) {
+    .hero-tech-planet {
+        width: 450px;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-planet-container {
+        justify-content: center;
+        align-items: flex-end;
+        padding-right: 0;
+        bottom: 15%;
+        top: auto;
+    }
+
+    .hero-tech-planet {
+        width: 320px;
+        opacity: 0.6;
+        /* Lower opacity on mobile so text remains readable */
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-main-spacecraft {
+        width: 500px;
+        right: -50px;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-spacecraft-container {
+        justify-content: center;
+        align-items: flex-end;
+        padding-right: 0;
+        bottom: 10%;
+    }
+
+    .hero-main-spacecraft {
+        width: 350px;
+        opacity: 0.8;
+        /* Kept higher opacity for mobile visibility */
+        /* Modify animation for mobile if needed, but keeping consistent is adequate */
+    }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa6';
 import './ContactSection.css';
 
 const ContactSection = () => {
@@ -22,9 +23,15 @@ const ContactSection = () => {
                     </div>
 
                     <div className="social-links">
-                        <a href="#" className="social-link" title="LinkedIn">LinkedIn</a>
-                        <a href="#" className="social-link" title="GitHub">GitHub</a>
-                        <a href="#" className="social-link" title="Twitter">Twitter</a>
+                        <a href="#" className="social-icon-link" aria-label="LinkedIn">
+                            <FaLinkedin />
+                        </a>
+                        <a href="#" className="social-icon-link" aria-label="GitHub">
+                            <FaGithub />
+                        </a>
+                        <a href="#" className="social-icon-link" aria-label="Twitter">
+                            <FaTwitter />
+                        </a>
                     </div>
                 </div>
 

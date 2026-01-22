@@ -126,11 +126,60 @@
     }
 }
 
-/* Alternating layout visuals */
-.project-card:nth-child(even) {
-    align-self: flex-end;
+/* Alternating layout visuals (Desktop only) */
+@media (min-width: 769px) {
+    .project-card:nth-child(even) {
+        align-self: flex-end;
+    }
+
+    .project-card:nth-child(odd) {
+        align-self: flex-start;
+    }
 }
 
-.project-card:nth-child(odd) {
-    align-self: flex-start;
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 768px) {
+    .projects-container {
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+
+    .projects-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .project-card {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        align-self: center !important;
+        /* Override alternating layout */
+        transform: translateY(50px);
+        /* Simpler animation start */
+    }
+
+    .project-card.visible {
+        transform: translateY(0);
+        /* Remove rotation for mobile performance/simplicity */
+    }
+
+    /* Adjust orbiting ring for mobile to fit */
+    .project-card::before {
+        width: 150%;
+        height: 150%;
+        top: -25%;
+        left: -25%;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-description {
+        font-size: 1rem;
+    }
+
+    .project-tags {
+        flex-wrap: wrap;
+    }
 }
